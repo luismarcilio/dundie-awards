@@ -1,0 +1,37 @@
+api:
+  award-notification:
+    queue-name: ${NOTIFICATION_QUEUE}
+    dead-letter-queue: "${api.award-notification.queue-name}.dlq"
+    dead-letter-exchange: "${api.award-notification.queue-name}.dlx"
+    dead-letter-routing-key: "${api.award-notification.queue-name}.dlrq"
+
+springdoc:
+  api-docs:
+    path: /openapi
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  spring:
+    datasource:
+      url: ${DATASOURCE_URL}
+      username: ${DATASOURCE_USERNAME}
+      password: ${DATASOURCE_PASSWORD}
+      driverClassName: org.h2.Driver
+    jpa:
+      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/static/
+  web:
+    resources:
+      static-locations: file:src/main/resources/static/
+      cache:
+        period: 0
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST}
+    port: ${RABBIT_MQ_PORT}
+    username: ${RABBIT_MQ_USERNAME}
+    password: ${RABBIT_MQ_PASSWORD}

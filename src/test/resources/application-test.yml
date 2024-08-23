@@ -1,0 +1,11 @@
+api:
+  award-notification:
+    queue-name: AWARDS
+
+server:
+  port: 3000
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
