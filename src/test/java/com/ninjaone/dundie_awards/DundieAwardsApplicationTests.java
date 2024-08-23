@@ -76,13 +76,13 @@ class DundieAwardsApplicationTests extends BaseIntegrationTest {
     }
 
     private CreateEmployeeDto getCreateEmployee(String firstName, String lastName) {
-        Organization organization = organizationRepository.findAll().getFirst();
+        Organization organization = organizationRepository.findAll().get(0);
         return new CreateEmployeeDto(firstName, lastName, organization.getId());
     }
 
     @Test
     void testGetOneEmployee() throws Exception {
-        Employee employee = employeeRepository.findAll().getFirst();
+        Employee employee = employeeRepository.findAll().get(0);
 
         mvc.perform(get("/employees/{id}", employee.getId()))
             .andDo(print())

@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class DundieAwardsAsyncTests extends BaseIntegrationTest {
+class DundieAwardsAsyncTests extends BaseIntegrationTest {
 
     @Autowired
     private OrganizationRepository organizationRepository;
@@ -45,7 +45,7 @@ public class DundieAwardsAsyncTests extends BaseIntegrationTest {
 
     @Test
     void testAddAward() throws JsonProcessingException {
-        Organization organization = organizationRepository.findAll().getFirst();
+        Organization organization = organizationRepository.findAll().get(0);
         assertTrue(employeeService.findAllByOrganization(organization).stream().allMatch(e -> e.getDundieAwards() == null));
         LocalDateTime eventDate = LocalDateTime.now();
         AwardEventDto event = new AwardEventDto(eventDate, organization.getId(), AwardEventDto.Event.AWARD_GIVEN);
