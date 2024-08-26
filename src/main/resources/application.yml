@@ -12,14 +12,13 @@ server:
   port: ${SERVER_PORT}
 
 spring:
-  spring:
-    datasource:
-      url: ${DATASOURCE_URL}
-      username: ${DATASOURCE_USERNAME}
-      password: ${DATASOURCE_PASSWORD}
-      driverClassName: org.h2.Driver
-    jpa:
-      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
   thymeleaf: # Thymeleaf
     cache: false
     mode: HTML
